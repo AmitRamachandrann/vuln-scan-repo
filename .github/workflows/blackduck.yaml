@@ -1,0 +1,39 @@
+name: Blackduck scan
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  gitleaks-codescan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v3
+
+      - name: Print GITHUB_RUN_ID
+        shell: bash
+        run: |
+          echo "Ref name is $GITHUB_RUN_ID"
+          echo "Source is ${{ github.server_url }}/${{ github.repository }}"
+          echo "Subject is $GITHUB_WORKFLOW_REF|${{ github.run_id }}|${{ github.run_attempt }}|${{ github.run_number }}"
+          echo "Job is $GITHUB_JOB"
+          echo "Step id is ${{ steps.internal.id }}"
+
+      - name: Blackduck scan
+        uses: cloudbees-io/blackduck-github-test@vuln-test-repo
+        with:
+          cloudbees_pat_token: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
+          is-github-workflow: true
+          cloudbees_api_url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
+          run_id: "14769369987"
+          job_id: $GITHUB_JOB
+          step_id: "Blackduck-scan"
+          blackduck-server-url: ${{ vars.BLACKDUCK_SERVER_URL }}
+          blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
+          project-name: 'vuln-scan-repo'
+          project-version: '0.0.1'
+
+
+
