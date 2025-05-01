@@ -1,9 +1,12 @@
 package main
 
 import (
+	"crypto/md5"
 	"encoding/json"
-	"github.com/julienschmidt/httprouter"
+	"fmt"
 	"net/http"
+
+	"github.com/julienschmidt/httprouter"
 )
 
 type Payload struct {
@@ -20,6 +23,10 @@ func hello(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		Message:  "Hello " + name,
 		Password: apiKey,
 	}
+
+	data := []byte("example input for hash")
+	hash := md5.Sum(data)
+	fmt.Printf("MD5 Hash: %x\n", hash)
 
 	response, err := json.Marshal(payload)
 	if err != nil {

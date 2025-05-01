@@ -3,7 +3,7 @@ name: Trivy Hybrid Scan
 on:
   push:
     branches:
-      - main
+      - mains
 
 jobs:
   trivy-hybrid-scan:
