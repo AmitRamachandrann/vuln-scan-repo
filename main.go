@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
+	"golang.org/x/crypto/ssh"
 )
 
 type Payload struct {
@@ -44,6 +45,21 @@ func hello(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 func main() {
 	router := httprouter.New()
 	router.POST("/hello/:name", hello)
+
+	// Create dummy SSH config — uses vulnerable package
+	config := &ssh.ClientConfig{
+		User: "test",
+		Auth: []ssh.AuthMethod{
+			ssh.Password("secret"),
+		},
+		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+	}
+
+	// Attempt a connection (will fail without server, but that's OK)
+	_, _, _, err := ssh.NewClientConn(nil, "localhost:22", config)
+	if err != nil {
+		fmt.Println("Expected error:", err)
+	}
 
 	http.ListenAndServe("0.0.0.0:5001", router)
 }
