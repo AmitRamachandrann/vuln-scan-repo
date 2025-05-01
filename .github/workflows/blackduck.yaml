@@ -30,10 +30,10 @@ jobs:
           run_id: "14769369987"
           job_id: $GITHUB_JOB
           step_id: "Blackduck-scan"
-          blackduck-server-url: ${{ vars.BLACKDUCK_SERVER_URL }}
-          blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
-          project-name: 'vuln-scan-repo'
-          project-version: '0.0.1'
+          blackduck_server_url: ${{ vars.BLACKDUCK_SERVER_URL }}
+          blackduck_api_token: ${{ secrets.BLACKDUCK_API_TOKEN }}
+          project_name: 'vuln-scan-repo'
+          project_version: '0.0.1'
 
 
 
