@@ -6,7 +6,7 @@ on:
     - main
 
 jobs:
-  gitleaks-codescan:
+  blackduck-codescan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository code
