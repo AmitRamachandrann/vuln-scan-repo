@@ -3,7 +3,7 @@ name: Trivy Hybrid Scan
 on:
   push:
     branches:
-      - mains
+      - main
 
 jobs:
   trivy-hybrid-scan:
@@ -37,7 +37,7 @@ jobs:
           tar -tf output.tar
 
       - name: Run Trivy scan
-        uses: cloudbees-io/trivy-github-test@v1
+        uses: cloudbees-io/trivy-github-test@vuln-test-repo
         with:
           binary-tar-path: output.tar
           cloudbees_pat_token: ${{ secrets.CLOUDBEES_HD_PAT }}
