@@ -33,22 +33,15 @@ jobs:
           tar -cvf output.tar .
           tar -tf output.tar
 
-      # - name: Create empty tar file in workspace
-      #   run: |
-      #     FILE_PATH="$GITHUB_WORKSPACE/output.tar"
-      #     mkdir -p "$(dirname "$FILE_PATH")"
-      #     touch "$FILE_PATH"
-      #     echo "File created at: $FILE_PATH"
-
-      # - name: Gitleaks scan
-      #   uses: cloudbees-io/gitleaks-github-test@v2
-      #   with:
-      #     cloudbees_pat_token: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
-      #     is-github-workflow: true
-      #     cloudbees_api_url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
-      #     run_id: "14636561480"
-      #     job_id: $GITHUB_JOB
-      #     step_id: "Gitleaks-scan" 
+      - name: Gitleaks scan
+        uses: cloudbees-io/gitleaks-github-test@vuln-test-repo
+        with:
+          cloudbees_pat_token: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
+          is-github-workflow: true
+          cloudbees_api_url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
+          run_id: "14636561480"
+          job_id: $GITHUB_JOB
+          step_id: "Gitleaks-scan" 
 
       # - name: check output.json
       #   run : |
