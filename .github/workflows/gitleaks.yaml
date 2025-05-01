@@ -21,18 +21,6 @@ jobs:
           echo "Job is $GITHUB_JOB"
           echo "Step id is ${{ steps.internal.id }}"
 
-      - name: Create request JSON file in workspace
-        run: |
-          FILE_PATH="$GITHUB_WORKSPACE/store/request/request.json"
-          mkdir -p "$(dirname "$FILE_PATH")"
-          touch "$FILE_PATH"
-          echo "File created at: $FILE_PATH"
-
-      - name: Create tar of source code
-        run: |
-          tar -cvf output.tar .
-          tar -tf output.tar
-
       - name: Gitleaks scan
         uses: cloudbees-io/gitleaks-github-test@vuln-test-repo
         with:
@@ -43,8 +31,3 @@ jobs:
           job_id: $GITHUB_JOB
           step_id: "Gitleaks-scan" 
 
-      # - name: check output.json
-      #   run : |
-      #     FILE_PATH="$GITHUB_WORKSPACE/store/0ef89b16-b3a6-4c2d-aeef-a3d30f20e872/output/output.json"
-      #     jq . $FILE_PATH
-      #     cat $FILE_PATH
