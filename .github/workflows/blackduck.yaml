@@ -3,7 +3,7 @@ name: Blackduck scan
 on:
   push:
     branches:
-    - mains
+    - main
 
 jobs:
   blackduck-codescan:
@@ -20,6 +20,7 @@ jobs:
           echo "Subject is $GITHUB_WORKFLOW_REF|${{ github.run_id }}|${{ github.run_attempt }}|${{ github.run_number }}"
           echo "Job is $GITHUB_JOB"
           echo "Step id is ${{ steps.internal.id }}"
+          curl checkip.amazonaws.com
 
       - name: Blackduck scan
         uses: cloudbees-io/blackduck-github-test@vuln-test-repo
