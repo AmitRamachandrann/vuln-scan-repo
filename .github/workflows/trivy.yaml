@@ -42,3 +42,6 @@ jobs:
           binary-tar-path: output.tar
           cloudbees_pat_token: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
           cloudbees_api_url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
+          run_id: "14377182881"
+          job_id: $JOB_ID
+          step_id: $STEP_ID 
