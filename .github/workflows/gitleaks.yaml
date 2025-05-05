@@ -22,11 +22,11 @@ jobs:
           echo "Step id is ${{ steps.internal.id }}"
 
       - name: Gitleaks scan
-        uses: cloudbees-io/gitleaks-github-test@vuln-test-repo
+        uses: cloudbees-io/gitleaks-github-test@main
         with:
           cloudbees_pat_token: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
           cloudbees_api_url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
-          run_id: "14636561480"
+          #run_id: "14636561480"
           job_id: $GITHUB_JOB
           step_id: "Gitleaks-scan" 
 
