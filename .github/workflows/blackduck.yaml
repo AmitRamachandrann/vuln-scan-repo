@@ -23,7 +23,7 @@ jobs:
           curl checkip.amazonaws.com
 
       - name: Blackduck scan
-        uses: cloudbees-io/blackduck-github-test@vuln-test-repo
+        uses: cloudbees-io/blackduck-github-test@main
         with:
           cloudbees_pat_token: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
           cloudbees_api_url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
