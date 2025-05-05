@@ -26,15 +26,9 @@ jobs:
         uses: cloudbees-io/blackduck-github-test@vuln-test-repo
         with:
           cloudbees_pat_token: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
-          is-github-workflow: true
           cloudbees_api_url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
-          run_id: "14769369987"
-          job_id: $GITHUB_JOB
-          step_id: "Blackduck-scan"
           blackduck_server_url: ${{ vars.BLACKDUCK_SERVER_URL }}
           blackduck_api_token: ${{ secrets.BLACKDUCK_API_TOKEN }}
-          project_name: 'vuln-scan-repo'
-          project_version: '0.0.1'
 
 
 
