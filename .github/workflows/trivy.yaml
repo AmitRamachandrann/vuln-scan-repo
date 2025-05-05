@@ -37,7 +37,7 @@ jobs:
           tar -tf output.tar
 
       - name: Run Trivy scan
-        uses: cloudbees-io/trivy-github-test@vuln-test-repo
+        uses: cloudbees-io/trivy-github-test@main
         with:
           binary-tar-path: output.tar
           cloudbees_pat_token: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
