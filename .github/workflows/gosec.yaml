@@ -7,7 +7,7 @@ on:
     - main
 
 jobs:
-  gitleaks-codescan:
+  gosec-codescan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository code
@@ -21,7 +21,7 @@ jobs:
           echo "Subject is $GITHUB_WORKFLOW_REF|${{ github.run_id }}|${{ github.run_attempt }}|${{ github.run_number }}"
           echo "Job is $GITHUB_JOB"
           echo "Step id is ${{ steps.internal.id }}"
-      - name: Gitleaks scan
+      - name: Gosec scan
         uses: cloudbees-io/gosec-github-test@main
         with:
           cloudbees-pat: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
