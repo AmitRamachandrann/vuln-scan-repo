@@ -26,5 +26,4 @@ jobs:
       - name: Gosec scan
         uses: cloudbees-io/gosec-github-test@main
         with:
-          cloudbees-pat: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
           cloudbees-url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
