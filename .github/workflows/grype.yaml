@@ -13,20 +13,34 @@ jobs:
       contents: read 
       
     steps:
-      - name: Checkout repository code
+      - name: Checkout source code
         uses: actions/checkout@v3
 
       - name: Print GITHUB_RUN_ID
-        shell: bash
+        run: echo "Ref name is $GITHUB_RUN_ID"
+
+      - name: Create empty JSON file in workspace
         run: |
-          echo "Ref name is $GITHUB_RUN_ID"
-          echo "Source is ${{ github.server_url }}/${{ github.repository }}"
-          echo "Subject is $GITHUB_WORKFLOW_REF|${{ github.run_id }}|${{ github.run_attempt }}|${{ github.run_number }}"
-          echo "Job is $GITHUB_JOB"
-          echo "Step id is ${{ steps.internal.id }}"
+          FILE_PATH="$GITHUB_WORKSPACE/store/request/request.json"
+          mkdir -p "$(dirname "$FILE_PATH")"
+          touch "$FILE_PATH"
+          echo "File created at: $FILE_PATH"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        run: |
+          docker build -t myapp:latest .
+
+      # Step 4: Save the Docker image as a TAR file
+      - name: Save Docker image as TAR file
+        run: |
+          docker save -o output.tar myapp:latest
+          tar -tf output.tar
+          
       - name: Grype scan
         uses: cloudbees-io/grype-github-test@main
         with:
-          cloudbees-pat: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
           cloudbees-url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
-          binary-tar-path: ""
+          binary-tar-path: output.tar
