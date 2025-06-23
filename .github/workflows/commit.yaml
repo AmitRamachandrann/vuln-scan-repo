@@ -1,0 +1,25 @@
+name: Repository Info Printer
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Print info
+        run: |
+          echo "Repository URL: ${{ github.server_url }}/${{ github.repository }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Commit URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+          echo "Ref: ${{ github.ref }}"
