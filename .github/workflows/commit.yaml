@@ -25,6 +25,7 @@ jobs:
           echo "Ref: ${{ github.ref }}"
 
       - name: checkout another repo
+        id: checkout-diff-repo
         uses: actions/checkout@v4
         with:
           repository: AmitRamachandrann/cafe
@@ -37,3 +38,4 @@ jobs:
           echo "Commit: ${{ github.sha }}"
           echo "Commit URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
           echo "Ref: ${{ github.ref }}"
+          echo "checkout output: ${{ steps.checkout-diff-repo.outputs.commit }}
