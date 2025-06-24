@@ -15,9 +15,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: cloudbees-io/checkout@v1
+        uses: actions/checkout@v4
 
       - name: Print info
+        run: |
+          echo "Repository URL: ${{ github.server_url }}/${{ github.repository }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Commit URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+          echo "Ref: ${{ github.ref }}"
+
+      - name: checkout another repo
+        uses: actions/checkout@v4
+        with:
+          repository: AmitRamachandrann/cafe
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+
+      - name: Print info another repo
         run: |
           echo "Repository URL: ${{ github.server_url }}/${{ github.repository }}"
           echo "Commit: ${{ github.sha }}"
