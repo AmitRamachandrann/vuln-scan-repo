@@ -22,13 +22,19 @@ jobs:
           echo "Step id is ${{ steps.internal.id }}"
           curl checkip.amazonaws.com
 
+      # - name: Blackduck scan
+      #   uses: cloudbees-io-gha/black-duck-scan-publish@expose_output
+      #   with:
+      #     cloudbees_pat_token: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
+      #     cloudbees_api_url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
+      #     blackduck_server_url: ${{ vars.BLACKDUCK_SERVER_URL }}
+      #     blackduck_api_token: ${{ secrets.BLACKDUCK_API_TOKEN }}
+
       - name: Blackduck scan
         uses: cloudbees-io-gha/black-duck-scan-publish@expose_output
         with:
-          cloudbees_pat_token: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
-          cloudbees_api_url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
-          blackduck_server_url: ${{ vars.BLACKDUCK_SERVER_URL }}
-          blackduck_api_token: ${{ secrets.BLACKDUCK_API_TOKEN }}
+          server-url: ${{ vars.BLACKDUCK_SERVER_URL }}
+          api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
 
 
 
