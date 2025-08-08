@@ -32,7 +32,7 @@ jobs:
 
       - id: coverity-step
         name: Coverity scan
-        uses: cloudbees-io-gha/coverity-scan-publish@CBP-18635
+        uses: cloudbees-io-gha/coverity-scan-publish@CBP-18634
         with:
           cloudbees_pat_token: ${{ secrets.CLOUDBEES_PREPROD_PAT }}
           cloudbees_api_url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
