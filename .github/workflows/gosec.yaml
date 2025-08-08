@@ -31,7 +31,7 @@ jobs:
           echo "Step id is ${{ steps.internal.id }}"
       - id: gosec-step
         name: Gosec scan
-        uses: cloudbees-io-gha/gosec-scan-publish@CBP-18638
+        uses: cloudbees-io-gha/gosec-scan-publish@v1
         with:
           cloudbees-url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
 
