@@ -1,0 +1,116 @@
+{
+    "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "Black Duck SCA (Intelligent)",
+                    "version": "10.6.0",
+                    "organization": "Black Duck",
+                    "rules": [
+                        {
+                            "id": "go.googlesource.com net#v0.10.0: go.googlesource.com crypto#v0.18.0",
+                            "shortDescription": {
+                                "text": "Transitive Dependency: go.googlesource.com net#v0.10.0 from go.googlesource.com crypto#v0.18.0"
+                            },
+                            "fullDescription": {
+                                "text": "go.googlesource.com net#v0.10.0 has the following vulnerabilities: [:orange_circle:] BDSA-2023-2733(CVE-2023-39325), [:yellow_circle:] BDSA-2024-9807, [:yellow_circle:] BDSA-2025-1901, [:yellow_circle:] BDSA-2024-0942, [:yellow_circle:] BDSA-2025-2490"
+                            },
+                            "help": {
+                                "markdown": "\n## Upgrade Guidance\n\n\n### Upgrade Guidance for Direct dependency\n\n| **Affected Direct Dependency**  | **Recommended short term version** | **Recommended long term version** |\n| :--- |:--- | :--- |\n| go.googlesource.com crypto#v0.18.0  | Not available  | Not available |\n\n### Upgrade Guidance for Transitive dependency\n\n| **Affected Transitive Dependency**  | **Recommended short term version** | **Recommended long term version** |\n| :--- | :--- | :--- |\n| go.googlesource.com net#v0.10.0  | v0.42.0  | v0.42.0 |\n\n\n\n[Click Here To See More Details in Black Duck](https://blackduck.saas-qa.beescloud.com/api/projects/fbea4d15-db71-46eb-922a-c20835c7dc10/versions/297f64cc-0749-4fac-95e3-3f5a0c10c123/vulnerability-bom?selectedComponent=f7705240-3f0b-46f4-bdf5-447b737a7490)\n\n## Vulnerabilities(BDSA,CVE)\n\n \n| **Severity**  | **Vulnerability** | **Summary** | **Solution Available?** | **Workaround Available?** |\n| :--- |:--- | :--- | :--- | :--- |\n| :orange_circle: | [BDSA-2023-2733](https://openhub.net/vulnerabilities/bdsa/BDSA-2023-2733) ([CVE-2023-39325](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)) | Golang Go Vulnerable to Denial-of-Service (DoS) via HTTP/2 Rapid Request Cancellations | Yes | - |\n| :yellow_circle: | [BDSA-2024-9807](https://openhub.net/vulnerabilities/bdsa/BDSA-2024-9807) | Golang Net Vulnerable to Denial-of-Service (DoS) via Non-Linear Parsing of Case-Insensitive Content in 'html' Package | Yes | - |\n| :yellow_circle: | [BDSA-2025-1901](https://openhub.net/vulnerabilities/bdsa/BDSA-2025-1901) | Go Vulnerable to Proxy Bypass via Improper Handling of IPv6 Zone IDs | Yes | - |\n| :yellow_circle: | [BDSA-2024-0942](https://openhub.net/vulnerabilities/bdsa/BDSA-2024-0942) | Golang Go HTTP/2 Functionality Vulnerable to Denial-of-Service (DoS) via HTTP/2 CONTINUATION Frame Abuse | Yes | - |\n| :yellow_circle: | [BDSA-2025-2490](https://openhub.net/vulnerabilities/bdsa/BDSA-2025-2490) | Go 'x/net/html' Module Vulnerable to Unexpected DOM Behavior via Tags with Unquoted Attributes | Yes | - |\n\n\n## Dependency tree\n- github.com/cloudbees-compliance/demo-go-service:-go_mod\n    - go.googlesource.com/crypto#v0.18.0\n        - go.googlesource.com/net#v0.10.0\n\n\n## References\n* Common Weakness Enumeration: [CWE-400](https://cwe.mitre.org/data/definitions/400.html)\n* Common Weakness Enumeration: [CWE-285](https://cwe.mitre.org/data/definitions/285.html)\n* Common Weakness Enumeration: [CWE-20](https://cwe.mitre.org/data/definitions/20.html)\n\n",
+                                "text": "go.googlesource.com net#v0.10.0 has the following vulnerabilities: [:orange_circle:] BDSA-2023-2733(CVE-2023-39325), [:yellow_circle:] BDSA-2024-9807, [:yellow_circle:] BDSA-2025-1901, [:yellow_circle:] BDSA-2024-0942, [:yellow_circle:] BDSA-2025-2490"
+                            },
+                            "properties": {
+                                "security-severity": "8.9",
+                                "tags": [
+                                    "security",
+                                    "open_source_analysis",
+                                    "transitive_dependency",
+                                    "patch_available",
+                                    "external/cwe/cwe-400",
+                                    "external/cwe/cwe-285",
+                                    "external/cwe/cwe-20"
+                                ]
+                            },
+                            "defaultConfiguration": {
+                                "level": "error"
+                            }
+                        },
+                        {
+                            "id": "go.googlesource.com crypto#v0.18.0",
+                            "shortDescription": {
+                                "text": "Direct Dependency: go.googlesource.com crypto#v0.18.0"
+                            },
+                            "fullDescription": {
+                                "text": "go.googlesource.com crypto#v0.18.0 has the following vulnerabilities: [:orange_circle:] BDSA-2024-9579, [:yellow_circle:] BDSA-2025-1488"
+                            },
+                            "help": {
+                                "markdown": "\n## Upgrade Guidance\n\n\n\n| **Affected Dependency**  | **Recommended short term version** | **Recommended long term version** |\n| :--- | :--- | :--- |\n| go.googlesource.com crypto#v0.18.0  | v0.36.0  | v0.36.0 |\n\n\n\n[Click Here To See More Details in Black Duck](https://blackduck.saas-qa.beescloud.com/api/projects/fbea4d15-db71-46eb-922a-c20835c7dc10/versions/297f64cc-0749-4fac-95e3-3f5a0c10c123/vulnerability-bom?selectedComponent=77764465-2d52-4c50-9401-6902f1125d70)\n\n## Vulnerabilities(BDSA,CVE)\n\n \n| **Severity**  | **Vulnerability** | **Summary** | **Solution Available?** | **Workaround Available?** |\n| :--- |:--- | :--- | :--- | :--- |\n| :orange_circle: | [BDSA-2024-9579](https://openhub.net/vulnerabilities/bdsa/BDSA-2024-9579) | golang.org/x/crypto Vulnerable to Authorization Bypass via Misuse of 'ServerConfig.PublicKeyCallback' | Yes | - |\n| :yellow_circle: | [BDSA-2025-1488](https://openhub.net/vulnerabilities/bdsa/BDSA-2025-1488) | Golang Crypto Vulnerable to Denial-of-Service (DoS) via SSH Servers Reading Pending Content into Memory | Yes | - |\n\n\n\n\n## References\n* Common Weakness Enumeration: [CWE-305](https://cwe.mitre.org/data/definitions/305.html)\n* Common Weakness Enumeration: [CWE-400](https://cwe.mitre.org/data/definitions/400.html)\n\n",
+                                "text": "go.googlesource.com crypto#v0.18.0 has the following vulnerabilities: [:orange_circle:] BDSA-2024-9579, [:yellow_circle:] BDSA-2025-1488"
+                            },
+                            "properties": {
+                                "security-severity": "8.9",
+                                "tags": [
+                                    "security",
+                                    "open_source_analysis",
+                                    "direct_dependency",
+                                    "patch_available",
+                                    "external/cwe/cwe-305",
+                                    "external/cwe/cwe-400"
+                                ]
+                            },
+                            "defaultConfiguration": {
+                                "level": "error"
+                            }
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "message": {
+                        "text": "This dependency has vulnerabilities. For detailed information regarding the vulnerabilities, take a look at the BDSAs and/or CVEs below."
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "file://unknown-file"
+                                },
+                                "region": {
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "ruleId": "go.googlesource.com net#v0.10.0: go.googlesource.com crypto#v0.18.0",
+                    "partialFingerprints": {
+                        "ruleIdLocationHash/v1": "3c33d3d995ff61902fc500b28e2b31387ae9c19938d7ea01f4f952e36209db0c"
+                    }
+                },
+                {
+                    "message": {
+                        "text": "This dependency has vulnerabilities. For detailed information regarding the vulnerabilities, take a look at the BDSAs and/or CVEs below."
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "file://unknown-file"
+                                },
+                                "region": {
+                                    "startLine": 1
+                                }
+                            }
+                        }
+                    ],
+                    "ruleId": "go.googlesource.com crypto#v0.18.0",
+                    "partialFingerprints": {
+                        "ruleIdLocationHash/v1": "206397be42eaa9c31c0d07dd51e2f24fb9f00213ff2de832f18dfc87b6fb198d"
+                    }
+                }
+            ]
+        }
+    ],
+    "version": "2.1.0"
+}
