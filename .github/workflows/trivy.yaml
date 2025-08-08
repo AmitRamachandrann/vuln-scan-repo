@@ -47,7 +47,7 @@ jobs:
 
       - id: trivy-step
         name: Run Trivy scan
-        uses: cloudbees-io-gha/trivy-scan-publish@CBP-18635
+        uses: cloudbees-io-gha/trivy-scan-publish@v2
         with:
           binary-tar-path: output.tar
           cloudbees-url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
