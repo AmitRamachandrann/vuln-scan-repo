@@ -26,7 +26,7 @@ jobs:
           echo "Step id is ${{ steps.internal.id }}"
 
       - name: Gitleaks scan
-        uses: cloudbees-io/gitleaks-github-test@CBP-18637
+        uses: cloudbees-io/gitleaks-scan-publish@CBP-18637
         with:
           cloudbees-url: ${{ vars.CLOUDBEES_PREPROD_API_URL }} 
 
