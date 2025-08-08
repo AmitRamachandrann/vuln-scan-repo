@@ -35,7 +35,7 @@ jobs:
         uses: cloudbees-io-gha/coverity-scan-publish@CBP-18634
         with:
           cloudbees-url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
-          step_id: "coverity-scan"
+          step-id: "coverity-scan"
           server-url: ${{ vars.COVERITY_SERVER_URL }}
           api-token: ${{ secrets.COVERITY_API_TOKEN_V }}
 
