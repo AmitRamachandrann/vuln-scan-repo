@@ -3,7 +3,7 @@ name: Gosec scan
 on:
   push:
     branches:
-    - main
+    - mains
 
 jobs:
   gosec-codescan:
