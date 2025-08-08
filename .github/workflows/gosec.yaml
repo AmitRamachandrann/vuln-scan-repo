@@ -24,6 +24,6 @@ jobs:
           echo "Job is $GITHUB_JOB"
           echo "Step id is ${{ steps.internal.id }}"
       - name: Gosec scan
-        uses: cloudbees-io/gosec-github-test@main
+        uses: cloudbees-io/gosec-github-test@CBP-18638
         with:
           cloudbees-url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
