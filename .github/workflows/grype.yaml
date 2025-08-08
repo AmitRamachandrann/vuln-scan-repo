@@ -10,7 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read 
+      contents: read  
+    outputs:
+      grype-job-output-critical: ${{ steps.grype-step.outputs.critical-count }}
+      grype-job-output-very-high: ${{ steps.grype-step.outputs.very-high-count }}
+      grype-job-output-high: ${{ steps.grype-step.outputs.high-count }}
+      grype-job-output-medium: ${{ steps.grype-step.outputs.medium-count }}
+      grype-job-output-low: ${{ steps.grype-step.outputs.low-count }}
       
     steps:
       - name: Checkout source code
@@ -39,8 +45,21 @@ jobs:
           docker save -o output.tar myapp:latest
           tar -tf output.tar
           
-      - name: Grype scan
+      - id: grype-step
+        name: Grype scan
         uses: cloudbees-io-gha/grype-scan-publish@CBP-18639
         with:
           cloudbees-url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
           binary-tar-path: output.tar
+
+      - id: print-outputs-from-grype-step
+        name: Print outputs from upstream grype step
+        shell: bash
+        run: |
+            #printing all outputs
+            echo "Outputs from upstream grype step:"
+            echo "Critical Count: ${{steps.grype-step.outputs.critical-count}}"
+            echo "Very High Count: ${{steps.grype-step.outputs.very-high-count}}"
+            echo "High Count: ${{steps.grype-step.outputs.high-count}}"
+            echo "Medium Count: ${{steps.grype-step.outputs.medium-count}}"
+            echo "Low Count: ${{steps.grype-step.outputs.low-count}}"
