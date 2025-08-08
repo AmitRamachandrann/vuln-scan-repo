@@ -7,7 +7,16 @@ on:
 
 jobs:
   trivy-hybrid-scan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
+    permissions:
+      id-token: write
+      contents: read 
+    outputs:
+      trivy-job-output-critical: ${{ steps.trivy-step.outputs.critical-count }}
+      trivy-job-output-very-high: ${{ steps.trivy-step.outputs.very-high-count }}
+      trivy-job-output-high: ${{ steps.trivy-step.outputs.high-count }}
+      trivy-job-output-medium: ${{ steps.trivy-step.outputs.medium-count }}
+      trivy-job-output-low: ${{ steps.trivy-step.outputs.low-count }}
 
     steps:
       - name: Checkout source code
@@ -36,7 +45,8 @@ jobs:
           docker save -o output.tar myapp:latest
           tar -tf output.tar
 
-      - name: Run Trivy scan
+      - id: trivy-step
+        name: Run Trivy scan
         uses: cloudbees-io-gha/trivy-scan-publish@CBP-18635
         with:
           binary-tar-path: output.tar
@@ -45,3 +55,15 @@ jobs:
           run_id: "14377182881"
           job_id: $JOB_ID
           step_id: $STEP_ID 
+
+      - id: print-outputs-from-trivy-step
+        name: Print outputs from upstream trivy step
+        shell: bash
+        run: |
+            #printing all outputs
+            echo "Outputs from upstream trivy step:"
+            echo "Critical Count: ${{steps.trivy-step.outputs.critical-count}}"
+            echo "Very High Count: ${{steps.trivy-step.outputs.very-high-count}}"
+            echo "High Count: ${{steps.trivy-step.outputs.high-count}}"
+            echo "Medium Count: ${{steps.trivy-step.outputs.medium-count}}"
+            echo "Low Count: ${{steps.trivy-step.outputs.low-count}}"
