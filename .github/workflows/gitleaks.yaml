@@ -33,7 +33,7 @@ jobs:
 
       - id: gitleaks-step
         name: Gitleaks scan
-        uses: cloudbees-io-gha/gitleaks-scan-publish@CBP-18637
+        uses: cloudbees-io-gha/gitleaks-scan-publish@v1
         with:
           cloudbees-url: ${{ vars.CLOUDBEES_PREPROD_API_URL }}
 
