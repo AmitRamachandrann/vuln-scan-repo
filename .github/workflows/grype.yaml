@@ -3,7 +3,7 @@ name: Grype scan
 on:
   push:
     branches:
-    - mains
+    - check
 
 jobs:
   grype-codescan:
