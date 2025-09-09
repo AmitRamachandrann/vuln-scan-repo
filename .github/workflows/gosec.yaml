@@ -45,5 +45,5 @@ jobs:
             echo "Very High Count: ${{steps.gosec-step.outputs.very-high-count}}"
             echo "High Count: ${{steps.gosec-step.outputs.high-count}}"
             echo "Medium Count: ${{steps.gosec-step.outputs.medium-count}}"
-            echo "Low Count: ${{steps.gosec-step.outputs.low-count}}"
+            echo "Low Count: ${{steps.gosec-step.outputs.low-count}}" 
 
